@@ -1,74 +1,72 @@
-import { RegisterFormData } from "./pages/Register";
-import { SignInFormData } from "./pages/SignIn";
-import {
-  UserType,
-} from "../../backend/src/shared/types";
+import { RegisterFormData } from './pages/Register'
+import { SignInFormData } from './pages/signin/SignIn'
+import { UserType } from '../../backend/src/shared/types'
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
 
 export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await fetch(`${API_BASE_URL}/api/users/me`, {
-    credentials: "include",
-  });
+    credentials: 'include',
+  })
   if (!response.ok) {
-    throw new Error("Error fetching user");
+    throw new Error('Error fetching user')
   }
-  return response.json();
-};
+  return response.json()
+}
 
 export const register = async (formData: RegisterFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/users/register`, {
-    method: "POST",
-    credentials: "include",
+    method: 'POST',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(formData),
-  });
+  })
 
-  const responseBody = await response.json();
+  const responseBody = await response.json()
 
   if (!response.ok) {
-    throw new Error(responseBody.message);
+    throw new Error(responseBody.message)
   }
-};
+}
 
 export const signIn = async (formData: SignInFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-    method: "POST",
-    credentials: "include",
+    method: 'POST',
+    credentials: 'include',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(formData),
-  });
+  })
 
-  const body = await response.json();
+  const body = await response.json()
   if (!response.ok) {
-    throw new Error(body.message);
+    throw new Error(body.message)
   }
-  return body;
-};
+  return body
+}
 
 export const validateToken = async () => {
   const response = await fetch(`${API_BASE_URL}/api/auth/validate-token`, {
-    credentials: "include",
-  });
+    credentials: 'include',
+  })
 
   if (!response.ok) {
-    throw new Error("Token invalid");
+    throw new Error('Token invalid')
   }
 
-  return response.json();
-};
+  return response.json()
+}
 
 export const signOut = async () => {
   const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
-    credentials: "include",
-    method: "POST",
-  });
+    credentials: 'include',
+    method: 'POST',
+  })
 
   if (!response.ok) {
-    throw new Error("Error during sign out");
+    throw new Error('Error during sign out')
   }
-};
+}
