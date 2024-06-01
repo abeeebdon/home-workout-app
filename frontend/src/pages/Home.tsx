@@ -1,60 +1,90 @@
-// import { useQuery } from "react-query";
-// import * as apiClient from "../api-client";
-// import LatestDestinationCard from "../components/LatestDestinationCard";
 import { useEffect, useState } from 'react'
-import { home } from '../components/data'
-type home = { id: number; text: string }[]
-const Home = () => {
-  // const { data: hotels } = useQuery("fetchQuery", () =>
-  //   apiClient.fetchHotels()
-  // );
+import { home as homeData } from '../components/data'
+import { useNavigate } from 'react-router-dom'
 
-  // const topRowHotels = hotels?.slice(0, 2) || [];
-  // const bottomRowHotels = hotels?.slice(2) || [];
-  const [num, setNum] = useState(1)
+type HomeType = { id: number; text: string; src: string }[]
+
+const Home = () => {
+  const [isLoading, setIsLoading] = useState(false)
+  const [num, setNum] = useState(0)
+  const [navDisplay, setNavDisplay] = useState(
+    new Array(homeData.length).fill(0)
+  )
   const [text, setText] = useState('')
-  const [outputData, setOutputData] = useState<undefined | home>()
+  const [src, setSrc] = useState('')
+  const [outputData, setOutputData] = useState<HomeType>([])
+  const navigate = useNavigate()
   useEffect(() => {
-    const filteredData = home.filter((data) => data.id === num)
-    setOutputData(filteredData)
-    outputData?.map((data) => {
-      const text: string | undefined = data.text
-      setText(text)
-    })
+    const fetchData = () => {
+      const filteredData = homeData.filter((data, index) => index === num)
+      setOutputData(filteredData)
+      if (filteredData.length > 0) {
+        setSrc(filteredData[0].src)
+        setText(filteredData[0].text)
+      }
+    }
+    setIsLoading(true)
+    fetchData()
+    setIsLoading(false)
   }, [num])
   const handleNextBtn = () => {
-    if (home.length > num) {
+    if (num < homeData.length - 1) {
       setNum(num + 1)
     } else {
-      setNum(1)
+      navigate('/signin')
     }
+  }
+  const handleSkipBtn = () => {
+    setNum(homeData.length - 1)
+  }
+
+  const handleBottomIcons = (id: number) => {
+    setNum(id)
   }
   return (
     <section className="flex justify-center items-center">
-      <div className="w-full max-w-96">
-        <div className="h-[80vh] mt-4">
-          <img src="" alt="image1" />
+      <div className="w-full max-w-[400px]">
+        <div className="h-[80vh] ">
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <img src={src} alt="Image" className="w-full h-full object-cover" />
+          )}
         </div>
-        <div>
+        <div className="mt-4 pt-4">
           <p>{text}</p>
-          <div className="mt-4 text-right">
-            <button className="btn-blue" onClick={handleNextBtn}>
-              Next
+          <div className="mt-4 flex justify-between px-4">
+            <button
+              className={
+                num === 0 ? 'overflow-hidden' : 'btn-transparent w-fit'
+              }
+              onClick={handleSkipBtn}
+            >
+              {num === 0 ? '' : 'skip'}
+            </button>
+            <button
+              className="btn-blue w-fit text-right"
+              onClick={handleNextBtn}
+            >
+              {num === homeData.length - 1 ? 'Signin' : 'Next'}
             </button>
           </div>
-        </div>
-        {/* <h2 className="text-3xl font-bold">Latest Destinations</h2>
-      <p>Most recent desinations added by our hosts</p> */}
-        <div className="grid gap-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {/* {topRowHotels.map((hotel) => (
-            <LatestDestinationCard hotel={hotel} />
-          ))}
-        </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {bottomRowHotels.map((hotel) => (
-            <LatestDestinationCard hotel={hotel} />
-          ))} */}
+          <div className="flex justify-center items-center gap-2 py-4">
+            {navDisplay.map((data, index) => {
+              return (
+                <div
+                  className={
+                    index === num
+                      ? 'w-6  border bg-blue-600 px-4 py-2 rounded-lg'
+                      : 'w-6  border border-blue-600 px-4 py-2 rounded-lg'
+                  }
+                  key={data}
+                  onClick={() => handleBottomIcons(index)}
+                >
+                  <p className="w-full "></p>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
