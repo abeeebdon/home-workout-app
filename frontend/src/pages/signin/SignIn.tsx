@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { FaEye, FaEyeSlash, FaLock, FaStar, FaVoicemail } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { BtnIcon } from '../../components/Icons'
+import Button from '../../components/Button'
 
 type SignInFormData = {
   email: string
@@ -16,10 +18,15 @@ const SignIn = () => {
   const fetchData = () => {}
 
   return (
-    <section className="w-full flex justify-center items-center">
-      <div className="mt-4 w-full max-w-96">
-        <h2 className="text-xl text-[#2C4BA0]">Welcome Back</h2>
-        <p className="text-[#111111B2]">
+    <section className="w-full flex justify-center items-center ">
+      <div
+        className="p-2 w-full max-w-[400px] h-[100vh]"
+        style={{ backgroundImage: 'url(/images/signup.png)' }}
+      >
+        <h2 className="text-[1.5rem] leading-[40px] text-[#2C4BA0] font-[500]">
+          Welcome Back
+        </h2>
+        <p className="text-[#6C757D] mt-2">
           Log in to access your personalized workouts and track your fitness
           journey.
         </p>
@@ -35,12 +42,12 @@ const SignIn = () => {
                 setFormData({ ...formData, email: e.target.value })
               }}
               placeholder="Email/Username"
-              className="basis-[90%] border-b border-black  outline-none"
+              className="basis-[90%] border-b border-black  outline-none bg-transparent"
             />
           </div>
           <div className="flex items-center gap-4 w-full my-8">
             <FaLock />
-            <div className="flex items-baseline border-b border-black justify-between basis-[90%]">
+            <div className="flex items-baseline border-b border-black justify-between basis-[90%] bg-transparent pt-8">
               <input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
@@ -60,19 +67,13 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <div>
-            <button
-              type="submit"
-              className="flex btn-blue w-full justify-center items-center gap-2"
-            >
-              <FaStar />
-              <span>Login</span>
-            </button>
-          </div>
+          <Button text="Login" />
         </form>
-        <div className="my-4 text-right">
-          <p>Forgot Password?</p>
-        </div>
+        <NavLink to="/forgot-password">
+          <div className="my-4 text-right">
+            <p className="text-[#6C757D]">Forgot Password?</p>
+          </div>
+        </NavLink>
         <div className="w-full text-center my-4">
           <p>OR</p>
         </div>

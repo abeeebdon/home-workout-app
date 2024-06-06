@@ -12,7 +12,7 @@
     @apply flex-1 font-semibold text-[1rem] text-gray-700;
   }
   .signup-input {
-    @apply w-full outline-none px-4 py-4 border border-black rounded-xl my-2;
+    @apply w-full outline-none px-4 py-4 bg-[#F7F9FC] border border-[#ADB5BD] rounded-lg my-2;
   }
   .otp-err {
     @apply border border-red-500 w-[100%] text-[1rem] min-[400px]:text-[2rem] min-[700px]:w-[80px] min-[600px]:text-[4rem] text-black shadow-xl text-center outline-none;

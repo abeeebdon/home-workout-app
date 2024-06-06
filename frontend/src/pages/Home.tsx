@@ -42,13 +42,13 @@ const Home = () => {
     setNum(id)
   }
   return (
-    <section className="flex justify-center items-center">
+    <section className="flex justify-center items-center pt-2">
       <div className="w-full max-w-[400px]">
-        <div className="h-[80vh] ">
+        <div className="h-[80vh]">
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-            <img src={src} alt="Image" className="w-full h-full object-cover" />
+            <img src={src} alt="Image" className="w-full h-full" />
           )}
         </div>
         <div className="mt-4 pt-4">
@@ -75,8 +75,8 @@ const Home = () => {
                 <div
                   className={
                     index === num
-                      ? 'w-6  border bg-blue-600 px-4 py-2 rounded-lg'
-                      : 'w-6  border border-blue-600 px-4 py-2 rounded-lg'
+                      ? 'w-4  border bg-blue-600 px-3 py-2 rounded-lg'
+                      : 'w-4  border border-blue-600 px-3 py-2 rounded-lg'
                   }
                   key={data}
                   onClick={() => handleBottomIcons(index)}

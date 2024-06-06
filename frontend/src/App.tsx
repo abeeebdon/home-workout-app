@@ -9,6 +9,7 @@ import SignIn from './pages/signin/SignIn'
 import Home from './pages/Home'
 import SignUp from './pages/signup/SignUp'
 import OtpVerification from './pages/verification/OtpVerification'
+import ForgotPassword from './pages/forgot-password/Index'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -19,6 +20,7 @@ const App = () => {
 
         <Route path="/register" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verification" element={<OtpVerification />} />
 
         <Route path="*" element={<Navigate to="/" />} />

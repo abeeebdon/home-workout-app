@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { FaEye, FaEyeSlash, FaLock, FaStar, FaVoicemail } from 'react-icons/fa'
+import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { BtnIcon } from '../../components/Icons'
+import Button from '../../components/Button'
 
 const SignUp = () => {
   type SignInFormData = {
@@ -18,14 +20,16 @@ const SignUp = () => {
 
   return (
     <section className="w-full flex justify-center items-center">
-      <div className="mt-4 w-full max-w-96">
-        <h2 className="text-xl text-[#2C4BA0]">Welcome !!!</h2>
-        <p className="text-[#111111B2]">
+      <div className="p-2 w-full max-w-[400px] h-[100vh]">
+        <h2 className="text-[1.5rem] leading-[40px] text-[#2C4BA0] font-[500]">
+          Welcome !!!
+        </h2>
+        <p className="text-[#6C757D] mt-2">
           Get personalized fitness with us! Sign up for tailored workouts, track
           progress, and connect with others. Start now!
         </p>
 
-        <form className="mt-8" onSubmit={onSubmit}>
+        <form className="mt-4" onSubmit={onSubmit}>
           <div className="w-full">
             <div className="">
               <label htmlFor="firstname" className="form-label block">
@@ -74,23 +78,16 @@ const SignUp = () => {
             </div>
           </div>
 
-          <div className="w-full mt-10 pt-8">
-            <button
-              type="submit"
-              className="flex btn-blue w-full justify-center items-center gap-2 mt-8"
-            >
-              <FaStar />
-              <span>Signup</span>
-            </button>
-          </div>
+          <Button text="Sign up" />
         </form>
 
-        <div className="flex items-center justify-center gap-2 my-4">
-          <p>Already have an account? </p>
-          <Link to="/signin" className="text-blue-900">
-            Sign in
-          </Link>
-        </div>
+        <Link to="/signin">
+          <div className="flex items-center justify-center gap-2 my-4">
+            <p>Already have an account? </p>
+
+            <span className="text-blue-900">Log in</span>
+          </div>
+        </Link>
       </div>
     </section>
   )
