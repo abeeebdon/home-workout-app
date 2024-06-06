@@ -3,47 +3,30 @@ import {
   Route,
   Routes,
   Navigate,
-} from "react-router-dom";
-import Layout from "./layouts/Layout";
-import Register from "./pages/Register";
-import SignIn from "./pages/SignIn";
-import Home from "./pages/Home";
+} from 'react-router-dom'
+
+import SignIn from './pages/signin/SignIn'
+import Home from './pages/Home'
+import SignUp from './pages/signup/SignUp'
+import OtpVerification from './pages/verification/OtpVerification'
+import ForgotPassword from './pages/forgot-password/Index'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Home />
-            </Layout>
-          }
-        />
-       
-        <Route
-          path="/register"
-          element={
-            <Layout>
-              <Register />
-            </Layout>
-          }
-        />
-        <Route
-          path="/sign-in"
-          element={
-            <Layout>
-              <SignIn />
-            </Layout>
-          }
-        />
+        <Route path="/" element={<Home />} />
+
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/verification" element={<OtpVerification />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App
