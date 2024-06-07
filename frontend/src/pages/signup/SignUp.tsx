@@ -1,18 +1,15 @@
 import { useState } from 'react'
-import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { BtnIcon } from '../../components/Icons'
 import Button from '../../components/Button'
 
+export type SignUpFormData = {
+  firstname: string
+  lastname: string
+  email: string
+}
 const SignUp = () => {
-  type SignInFormData = {
-    firstname: string
-    lastname: string
-    email: string
-  }
-
-  const [formData, setFormData] = useState<SignInFormData>({} as SignInFormData)
-  const [showPassword, setShowPassword] = useState(false)
+  const [formData, setFormData] = useState<SignUpFormData>({} as SignUpFormData)
+  // const [showPassword, setShowPassword] = useState(false)
   const onSubmit = () => {
     fetchData()
   }

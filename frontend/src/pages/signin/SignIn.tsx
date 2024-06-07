@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { FaEye, FaEyeSlash, FaLock, FaStar, FaVoicemail } from 'react-icons/fa'
+import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
-import { BtnIcon } from '../../components/Icons'
 import Button from '../../components/Button'
 
-type SignInFormData = {
+export type SignInFormData = {
   email: string
   password: string
 }
@@ -56,7 +55,7 @@ const SignIn = () => {
                 onChange={(e) => {
                   setFormData({ ...formData, password: e.target.value })
                 }}
-                className="w-full outline-none"
+                className="w-full outline-none bg-transparent"
               />
               <div
                 onClick={() => {

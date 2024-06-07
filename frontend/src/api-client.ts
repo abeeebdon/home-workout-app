@@ -1,4 +1,4 @@
-import { RegisterFormData } from './pages/Register'
+import { SignUpFormData } from './pages/signup/SignUp'
 import { SignInFormData } from './pages/signin/SignIn'
 import { UserType } from '../../backend/src/shared/types'
 
@@ -14,7 +14,7 @@ export const fetchCurrentUser = async (): Promise<UserType> => {
   return response.json()
 }
 
-export const register = async (formData: RegisterFormData) => {
+export const register = async (formData: SignUpFormData) => {
   const response = await fetch(`${API_BASE_URL}/api/users/register`, {
     method: 'POST',
     credentials: 'include',

@@ -2,22 +2,16 @@ import { useEffect, useState } from 'react'
 import { home as homeData } from '../components/data'
 import { useNavigate } from 'react-router-dom'
 
-type HomeType = { id: number; text: string; src: string }[]
-
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [num, setNum] = useState(0)
-  const [navDisplay, setNavDisplay] = useState(
-    new Array(homeData.length).fill(0)
-  )
   const [text, setText] = useState('')
   const [src, setSrc] = useState('')
-  const [outputData, setOutputData] = useState<HomeType>([])
   const navigate = useNavigate()
+  const navDisplay = new Array(homeData.length).fill(0)
   useEffect(() => {
     const fetchData = () => {
-      const filteredData = homeData.filter((data, index) => index === num)
-      setOutputData(filteredData)
+      const filteredData = homeData.filter((data) => data.id - 1 === num)
       if (filteredData.length > 0) {
         setSrc(filteredData[0].src)
         setText(filteredData[0].text)
