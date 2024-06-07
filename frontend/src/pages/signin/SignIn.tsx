@@ -20,7 +20,10 @@ const SignIn = () => {
     <section className="w-full flex justify-center items-center ">
       <div
         className="p-2 w-full max-w-[400px] h-[100vh]"
-        style={{ backgroundImage: 'url(/images/signup.png)' }}
+        style={{
+          backgroundImage: 'url(/images/signup.png)',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
         <h2 className="text-[1.5rem] leading-[40px] text-[#2C4BA0] font-[500]">
           Welcome Back
