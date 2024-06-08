@@ -36,7 +36,7 @@ const Home = () => {
     setNum(id)
   }
   return (
-    <section className="flex justify-center items-center pt-2">
+    <section className="flex justify-center items-center pt-2 bg-blue-50">
       <div className="w-full max-w-[400px]">
         <div className="h-[80vh]">
           {isLoading ? (

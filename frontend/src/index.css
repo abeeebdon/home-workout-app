@@ -18,6 +18,9 @@
     @apply border border-red-500 w-[100%] text-[1rem] min-[400px]:text-[2rem] min-[700px]:w-[80px] min-[600px]:text-[4rem] text-black shadow-xl text-center outline-none;
   }
   .otp {
-    @apply border border-slate-500 w-[100%] text-[1rem] min-[400px]:text-[2rem] min-[700px]:w-[80px] min-[600px]:text-[4rem] text-black shadow-xl  text-center outline-none;
+    @apply border border-[#6C757D] bg-[#F7F9FC] rounded-lg w-[100%] text-[1rem] min-[400px]:text-[2rem] min-[700px]:w-[80px] min-[600px]:text-[4rem] text-black  text-center outline-none;
+  }
+  .keyboard {
+    @apply grid grid-cols-3 w-full text-center gap-4;
   }
 }

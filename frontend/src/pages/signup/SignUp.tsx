@@ -75,7 +75,7 @@ const SignUp = () => {
             </div>
           </div>
 
-          <Button text="Sign up" />
+          <Button text="Sign up" location="verification" />
         </form>
 
         <Link to="/signin">

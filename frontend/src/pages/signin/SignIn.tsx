@@ -17,7 +17,7 @@ const SignIn = () => {
   const fetchData = () => {}
 
   return (
-    <section className="w-full flex justify-center items-center ">
+    <section className="w-full flex justify-center items-center bg-blue-50">
       <div
         className="p-2 w-full max-w-[400px] h-[100vh]"
         style={{
@@ -69,7 +69,7 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <Button text="Login" />
+          <Button text="Login" location="" />
         </form>
         <NavLink to="/forgot-password">
           <div className="my-4 text-right">
