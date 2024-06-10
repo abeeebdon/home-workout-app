@@ -18,7 +18,7 @@ const Verified = () => {
             fitness journey!
           </p>
         </div>
-        <Button text="Get started" location="signin" />
+        <Button text="Get started" location="get-started" />
       </div>
     </section>
   )

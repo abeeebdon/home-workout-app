@@ -11,6 +11,7 @@ import SignUp from './pages/signup/SignUp'
 import OtpVerification from './pages/verification/OtpVerification'
 import ForgotPassword from './pages/forgot-password/Index'
 import Verified from './pages/auth/Verified'
+import GetStarted from './pages/signup/GetStarted'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verification" element={<OtpVerification />} />
         <Route path="/verified" element={<Verified />} />
+        <Route path="/get-started" element={<GetStarted />} />
 
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
