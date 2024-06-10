@@ -1,5 +1,5 @@
-import { SignUpFormData } from './pages/signup/SignUp'
-import { SignInFormData } from './pages/signin/SignIn'
+import { SignUpFormData } from './pages/auth/signup/SignUp'
+import { SignInFormData } from './pages/auth/signin/SignIn'
 import { UserType } from '../../backend/src/shared/types'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''

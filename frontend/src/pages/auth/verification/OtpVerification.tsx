@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { DeleteIcon, GoIcon } from '../../components/Icons'
+import { DeleteIcon, GoIcon } from '../../../components/Icons'
 import { FaLongArrowAltDown } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 

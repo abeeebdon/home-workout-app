@@ -5,13 +5,19 @@ import {
   Navigate,
 } from 'react-router-dom'
 
-import SignIn from './pages/signin/SignIn'
+import SignIn from './pages/auth/signin/SignIn'
 import Home from './pages/Home'
-import SignUp from './pages/signup/SignUp'
-import OtpVerification from './pages/verification/OtpVerification'
-import ForgotPassword from './pages/forgot-password/Index'
+import SignUp from './pages/auth/signup/SignUp'
+import OtpVerification from './pages/auth/verification/OtpVerification'
+import ForgotPassword from './pages/auth/forgot-password/Index'
 import Verified from './pages/auth/Verified'
-import GetStarted from './pages/signup/GetStarted'
+import GetStarted from './pages/auth/signup/GetStarted'
+
+import Layout from './pages/homepage/Layout'
+import HomePage from './pages/homepage/Index'
+import Tips from './pages/homepage/tips/Index'
+import Tracker from './pages/homepage/tracker/Index'
+import History from './pages/homepage/history/Index'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -19,6 +25,13 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage />} />
+          <Route path="tips" element={<Tips />} />
+          <Route path="tracker" element={<Tracker />} />
+          <Route path="history" element={<History />} />
+        </Route>
 
         <Route path="/register" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />

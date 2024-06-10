@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
-import Button from '../../components/Button'
+import Button from '../../../components/Button'
 
 export type SignInFormData = {
   email: string
@@ -69,7 +69,7 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <Button text="Login" location="" />
+          <Button text="Login" location="/home" />
         </form>
         <NavLink to="/forgot-password">
           <div className="my-4 text-right">
