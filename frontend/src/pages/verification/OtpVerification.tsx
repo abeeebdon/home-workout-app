@@ -11,72 +11,79 @@ const OtpVerification = () => {
   const [otp, setOtp] = useState(new Array(4).fill(''))
   const [timer, setTimer] = useState(60)
   const [inputKey, setInputKey] = useState<number | undefined>()
-  const [num, setNum] = useState(0)
-  const [keyboard, setKeyboard] = useState<number[]>([
-    1, 2, 3, 4, 5, 6, 7, 8, 9,
-  ])
+  const [num, setNum] = useState<number>(0)
+  const keyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
   const [otpError, setOtpError] = useState(false)
 
+  // const decrementTimer = () => {
+  //   setTimer((prev) => prev - 1)
+  // }
+
+  // useEffect(() => {
+  //   if (timer > 0) {
+  //     const timerId = setInterval(decrementTimer, 1000)
+  //     return () => clearInterval(timerId)
+  //   }
+  // }, [timer])
+
   const onSubmit = () => {
+    const fetchData = () => {}
     fetchData()
   }
 
-  const fetchData = () => {}
   const handleOtpValueChange = (index: number, data: number) => {
-    if (inputKey) {
-      const updatedOtp = [...otp]
-      updatedOtp[index] = inputKey
-      setOtp(updatedOtp)
-    } else {
-      if (isNaN(data)) return false // do not allow alphabets
-      if (data > 9) return false // do not allow more than 9
-      const updatedOtp = [...otp]
-      updatedOtp[index] = data
-      setOtp(updatedOtp)
+    inputRefs.current[index].focus()
+    buttonRef.current?.click()
 
-      // Move to the next input field if not the last one
-      if (index < otp.length - 1) {
-        inputRefs.current[index + 1].focus()
-      }
+    if (isNaN(data)) return false // do not allow alphabets
+    if (data > 9) return false // do not allow more than 9
+    const updatedOtp = [...otp]
+    updatedOtp[index] = data
+    setOtp(updatedOtp)
+
+    // Move to the next input field if not the last one
+    if (index < otp.length - 1 && data) {
+      inputRefs.current[index + 1].focus()
     }
+    setNum(index)
   }
   const handleBackspace = (index: number, event: any) => {
     if (event.key === 'Backspace' && index > 0) {
       const updatedOtp = [...otp]
-      updatedOtp[index] = ''
+      updatedOtp[index - 1] = ''
       setOtp(updatedOtp)
       if (index > 0) {
         inputRefs.current[index - 1].focus()
       }
     }
   }
-
-  const decrementTimer = () => {
-    setTimer((prev) => prev - 1)
-  }
-
-  useEffect(() => {
-    if (timer > 0) {
-      const timerId = setInterval(decrementTimer, 1000)
-      return () => clearInterval(timerId)
+  const handlescreenBackspace = () => {
+    if (num > 0) {
+      inputRefs.current[num].focus()
     }
-    // Focus the input element when the component mounts
-    // setInterval(() => {
-    //   inputRefs.current[num].focus()
-    //   // Click the button element after focusing the input element
-    //   buttonRef.current?.click()
-    // }, 1000)
-    // const updatedOtp = [...otp]
-    // updatedOtp[num] = inputKey
-    // setOtp(updatedOtp)
-    // if (inputRefs.current) {
-    //   setNum(num + 1)
-    // }
-  }, [timer])
-
-  const handleKeyBoard = (data: number) => {
-    setInputKey(data)
+    if (num > 0 && num < 4) {
+      const updatedOtp = [...otp]
+      updatedOtp[num] = ''
+      setOtp(updatedOtp)
+    }
   }
+  useEffect(() => {
+    if (inputKey !== undefined && num < 4) {
+      handleOtpValueChange(num, inputKey)
+      buttonRef.current?.click()
+      setNum(num + 1)
+    }
+  }, [inputKey])
+  const handleKeyBoard = (data: number) => {
+    if (num < 4) {
+      setInputKey(data)
+      inputRefs.current[num].focus()
+      if (inputKey) {
+        handleOtpValueChange(num, inputKey)
+      }
+    }
+  }
+  console.log(inputKey)
   return (
     <section
       className="w-full flex justify-center min-h-[90vh]"
@@ -126,7 +133,11 @@ const OtpVerification = () => {
                 <button
                   key={data}
                   ref={() => buttonRef.current}
-                  className="w-full max-w-[320px] bg-[#F7F9FC] h-full max-h-[72px] rounded-lg p-4 cursor-pointer"
+                  className={
+                    data === 0
+                      ? 'w-full max-w-[320px] bg-[#F7F9FC] h-full max-h-[72px] rounded-lg p-4 cursor-pointer col-start-2'
+                      : 'w-full max-w-[320px] bg-[#F7F9FC] h-full max-h-[72px] rounded-lg p-4 cursor-pointer'
+                  }
                   onClick={() => handleKeyBoard(data)}
                 >
                   <span>{data}</span>
@@ -135,17 +146,16 @@ const OtpVerification = () => {
             })}
             <div
               className="w-full max-w-[320px] bg-[#F7F9FC] h-full max-h-[72px]
-            rounded-lg p-4 flex justify-center cursor-pointer "
+            rounded-lg p-4 flex justify-center cursor-pointer col-start-1 row-start-4"
+              onClick={handlescreenBackspace}
             >
               <DeleteIcon />
             </div>
 
-            <span className="w-full max-w-[320px] bg-[#F7F9FC] h-full max-h-[72px] rounded-lg p-4 cursor-pointer">
-              0
-            </span>
             <div
-              className="w-full max-w-[320px] flex justify-center bg-[#F7F9FC] h-full max-h-[72px]
-            rounded-lg p-4 cursor-pointer"
+              className="w-full max-w-[320px] flex justify-center h-full max-h-[72px]
+            rounded-lg p-4 cursor-pointer bg-[#2C4BA0] hover:text-white hover:bg-blue-300
+"
               onClick={() => navigate('/verified')}
             >
               <GoIcon />
