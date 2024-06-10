@@ -52,7 +52,7 @@ const SignUp = () => {
                 type="text"
                 value={formData.lastname}
                 onChange={(e) => {
-                  setFormData({ ...formData, firstname: e.target.value })
+                  setFormData({ ...formData, lastname: e.target.value })
                 }}
                 placeholder="Enter Your Last Name"
                 className="signup-input"
