@@ -15,16 +15,16 @@ const OtpVerification = () => {
   const keyboard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
   const [otpError, setOtpError] = useState(false)
 
-  // const decrementTimer = () => {
-  //   setTimer((prev) => prev - 1)
-  // }
+  const decrementTimer = () => {
+    setTimer((prev) => prev - 1)
+  }
 
-  // useEffect(() => {
-  //   if (timer > 0) {
-  //     const timerId = setInterval(decrementTimer, 1000)
-  //     return () => clearInterval(timerId)
-  //   }
-  // }, [timer])
+  useEffect(() => {
+    if (timer > 0) {
+      const timerId = setInterval(decrementTimer, 1000)
+      return () => clearInterval(timerId)
+    }
+  }, [timer])
 
   const onSubmit = () => {
     const fetchData = () => {}
@@ -104,7 +104,9 @@ const OtpVerification = () => {
                     type="text"
                     placeholder=""
                     value={data}
-                    ref={(el) => (inputRefs.current[index] = el)}
+                    ref={(el) =>
+                      (inputRefs.current[index] = el as HTMLInputElement)
+                    }
                     onChange={(e) => {
                       handleOtpValueChange(index, Number(e.target.value))
                     }}
