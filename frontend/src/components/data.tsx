@@ -47,3 +47,24 @@ export const bottomNavbar: navbar = [
     target: 'tips',
   },
 ]
+
+type btnData = string[]
+export const btnData: btnData = ['For you', 'Browse', 'Saved']
+
+export const forYou: home = [
+  {
+    id: 2,
+    src: '/images/image3.png',
+    text: 'Easily  ',
+  },
+  {
+    id: 3,
+    src: '/images/image11.png',
+    text: 'STRENGTH',
+  },
+  {
+    id: 4,
+    src: '/images/image11.png',
+    text: 'STRENGTH',
+  },
+]

@@ -36,50 +36,43 @@ const Home = () => {
     setNum(id)
   }
   return (
-    <section className="flex justify-center items-center pt-2 bg-blue-50">
-      <div className="w-full max-w-[400px]">
-        <div className="h-[80vh]">
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <img src={src} alt="Image" className="w-full h-full" />
-          )}
+    <section className="w-full flex flex-col">
+      <div className="h-[75vh]">
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <img src={src} alt="Image" className="w-full h-full" />
+        )}
+      </div>
+      <div className="mt-4 pt-4">
+        <p>{text}</p>
+        <div className="mt-4 flex justify-between px-4">
+          <button
+            className={num === 0 ? 'overflow-hidden' : 'btn-transparent w-fit'}
+            onClick={handleSkipBtn}
+          >
+            {num === 0 ? '' : 'skip'}
+          </button>
+          <button className="btn-blue w-fit text-right" onClick={handleNextBtn}>
+            {num === homeData.length - 1 ? 'Signin' : 'Next'}
+          </button>
         </div>
-        <div className="mt-4 pt-4">
-          <p>{text}</p>
-          <div className="mt-4 flex justify-between px-4">
-            <button
-              className={
-                num === 0 ? 'overflow-hidden' : 'btn-transparent w-fit'
-              }
-              onClick={handleSkipBtn}
-            >
-              {num === 0 ? '' : 'skip'}
-            </button>
-            <button
-              className="btn-blue w-fit text-right"
-              onClick={handleNextBtn}
-            >
-              {num === homeData.length - 1 ? 'Signin' : 'Next'}
-            </button>
-          </div>
-          <div className="flex justify-center items-center gap-2 py-4">
-            {navDisplay.map((data, index) => {
-              return (
-                <div
-                  className={
-                    index === num
-                      ? 'w-4  border bg-blue-600 px-3 py-2 rounded-lg'
-                      : 'w-4  border border-blue-600 px-3 py-2 rounded-lg'
-                  }
-                  key={data}
-                  onClick={() => handleBottomIcons(index)}
-                >
-                  <p className="w-full "></p>
-                </div>
-              )
-            })}
-          </div>
+        <div className="flex justify-center items-center gap-2 py-4">
+          {navDisplay.map((data, index) => {
+            return (
+              <div
+                className={
+                  index === num
+                    ? 'w-4  border bg-blue-600 px-3 py-2 rounded-lg'
+                    : 'w-4  border border-blue-600 px-3 py-2 rounded-lg'
+                }
+                key={data}
+                onClick={() => handleBottomIcons(index)}
+              >
+                <p className="w-full "></p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

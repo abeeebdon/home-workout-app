@@ -14,7 +14,7 @@ import Verified from './pages/auth/Verified'
 import GetStarted from './pages/auth/signup/GetStarted'
 
 import Layout from './pages/homepage/Layout'
-import HomePage from './pages/homepage/Index'
+import HomePage from './pages/homepage/content/HomePage'
 import Tips from './pages/homepage/tips/Index'
 import Tracker from './pages/homepage/tracker/Index'
 import History from './pages/homepage/history/Index'
@@ -22,27 +22,31 @@ import History from './pages/homepage/history/Index'
 const App = () => {
   // const { isLoggedIn } = useAppContext();
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage />} />
-          <Route path="tips" element={<Tips />} />
-          <Route path="tracker" element={<Tracker />} />
-          <Route path="history" element={<History />} />
-        </Route>
+    <main className="w-full flex justify-center bg-blue-50">
+      <section className="w-full max-w-[500px]">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="tips" element={<Tips />} />
+              <Route path="tracker" element={<Tracker />} />
+              <Route path="history" element={<History />} />
+            </Route>
 
-        <Route path="/register" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/verification" element={<OtpVerification />} />
-        <Route path="/verified" element={<Verified />} />
-        <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/verification" element={<OtpVerification />} />
+            <Route path="/verified" element={<Verified />} />
+            <Route path="/get-started" element={<GetStarted />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </Router>
+      </section>
+    </main>
   )
 }
 
