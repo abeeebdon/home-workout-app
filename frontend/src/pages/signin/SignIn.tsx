@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import { FaEye, FaEyeSlash, FaLock, FaStar, FaVoicemail } from 'react-icons/fa'
+import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
-import { BtnIcon } from '../../components/Icons'
+// import { BtnIcon } from '../../components/Icons'
 import Button from '../../components/Button'
 
-type SignInFormData = {
-  email: string
-  password: string
-}
+export type SignInFormData = {
+   email: string;
+   password: string;
+ };
 
 const SignIn = () => {
   const [formData, setFormData] = useState<SignInFormData>({} as SignInFormData)
@@ -18,7 +18,7 @@ const SignIn = () => {
   const fetchData = () => {}
 
   return (
-    <section className="w-full flex justify-center items-center ">
+    <section className="flex items-center justify-center w-full ">
       <div
         className="p-2 w-full max-w-[400px] h-[100vh]"
         style={{ backgroundImage: 'url(/images/signup.png)' }}
@@ -45,7 +45,7 @@ const SignIn = () => {
               className="basis-[90%] border-b border-black  outline-none bg-transparent"
             />
           </div>
-          <div className="flex items-center gap-4 w-full my-8">
+          <div className="flex items-center w-full gap-4 my-8">
             <FaLock />
             <div className="flex items-baseline border-b border-black justify-between basis-[90%] bg-transparent pt-8">
               <input
@@ -74,7 +74,7 @@ const SignIn = () => {
             <p className="text-[#6C757D]">Forgot Password?</p>
           </div>
         </NavLink>
-        <div className="w-full text-center my-4">
+        <div className="w-full my-4 text-center">
           <p>OR</p>
         </div>
         <div className="flex items-center justify-center gap-2 my-4">

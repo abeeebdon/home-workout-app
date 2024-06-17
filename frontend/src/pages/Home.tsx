@@ -2,22 +2,23 @@ import { useEffect, useState } from 'react'
 import { home as homeData } from '../components/data'
 import { useNavigate } from 'react-router-dom'
 
-type HomeType = { id: number; text: string; src: string }[]
+// type HomeType = { id: number; text: string; src: string }[]
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [num, setNum] = useState(0)
-  const [navDisplay, setNavDisplay] = useState(
-    new Array(homeData.length).fill(0)
-  )
+  // const [navDisplay, setNavDisplay] = useState(
+  const [navDisplay] = useState(
+       new Array(homeData.length).fill(0)
+     )
   const [text, setText] = useState('')
   const [src, setSrc] = useState('')
-  const [outputData, setOutputData] = useState<HomeType>([])
+  // const [outputData, setOutputData] = useState<HomeType>([])
   const navigate = useNavigate()
   useEffect(() => {
     const fetchData = () => {
-      const filteredData = homeData.filter((data, index) => index === num)
-      setOutputData(filteredData)
+      const filteredData = homeData.filter((_data, index) => index === num)
+      // setOutputData(filteredData)
       if (filteredData.length > 0) {
         setSrc(filteredData[0].src)
         setText(filteredData[0].text)
@@ -42,7 +43,7 @@ const Home = () => {
     setNum(id)
   }
   return (
-    <section className="flex justify-center items-center pt-2">
+    <section className="flex items-center justify-center pt-2">
       <div className="w-full max-w-[400px]">
         <div className="h-[80vh]">
           {isLoading ? (
@@ -51,9 +52,9 @@ const Home = () => {
             <img src={src} alt="Image" className="w-full h-full" />
           )}
         </div>
-        <div className="mt-4 pt-4">
+        <div className="pt-4 mt-4">
           <p>{text}</p>
-          <div className="mt-4 flex justify-between px-4">
+          <div className="flex justify-between px-4 mt-4">
             <button
               className={
                 num === 0 ? 'overflow-hidden' : 'btn-transparent w-fit'
@@ -63,14 +64,14 @@ const Home = () => {
               {num === 0 ? '' : 'skip'}
             </button>
             <button
-              className="btn-blue w-fit text-right"
+              className="text-right btn-blue w-fit"
               onClick={handleNextBtn}
             >
               {num === homeData.length - 1 ? 'Signin' : 'Next'}
             </button>
           </div>
-          <div className="flex justify-center items-center gap-2 py-4">
-            {navDisplay.map((data, index) => {
+          <div className="flex items-center justify-center gap-2 py-4">
+             {navDisplay.map((data, index) => { 
               return (
                 <div
                   className={
@@ -84,7 +85,7 @@ const Home = () => {
                   <p className="w-full "></p>
                 </div>
               )
-            })}
+             })} 
           </div>
         </div>
       </div>

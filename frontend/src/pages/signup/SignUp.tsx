@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
+// import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { BtnIcon } from '../../components/Icons'
+// import { BtnIcon } from '../../components/Icons'
 import Button from '../../components/Button'
 
 const SignUp = () => {
@@ -12,14 +12,14 @@ const SignUp = () => {
   }
 
   const [formData, setFormData] = useState<SignInFormData>({} as SignInFormData)
-  const [showPassword, setShowPassword] = useState(false)
+  // const [showPassword, setShowPassword] = useState(false)
   const onSubmit = () => {
     fetchData()
   }
   const fetchData = () => {}
 
   return (
-    <section className="w-full flex justify-center items-center">
+    <section className="flex items-center justify-center w-full">
       <div className="p-2 w-full max-w-[400px] h-[100vh]">
         <h2 className="text-[1.5rem] leading-[40px] text-[#2C4BA0] font-[500]">
           Welcome !!!
@@ -32,7 +32,7 @@ const SignUp = () => {
         <form className="mt-4" onSubmit={onSubmit}>
           <div className="w-full">
             <div className="">
-              <label htmlFor="firstname" className="form-label block">
+              <label htmlFor="firstname" className="block form-label">
                 First Name
               </label>
               <input
@@ -47,7 +47,7 @@ const SignUp = () => {
               />
             </div>
             <div className="">
-              <label htmlFor="lastname" className="form-label block">
+              <label htmlFor="lastname" className="block form-label">
                 Last Name
               </label>
               <input
@@ -62,7 +62,7 @@ const SignUp = () => {
               />
             </div>
             <div className="">
-              <label htmlFor="email" className="form-label block">
+              <label htmlFor="email" className="block form-label">
                 Email
               </label>
               <input
