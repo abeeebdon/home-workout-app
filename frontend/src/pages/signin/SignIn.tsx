@@ -1,21 +1,47 @@
 import { useState } from 'react'
 import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
-import { Link, NavLink } from 'react-router-dom'
-// import { BtnIcon } from '../../components/Icons'
 import Button from '../../components/Button'
+import { useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "react-query";
+import * as apiClient from "../../api-client";
+import { useAppContext } from "../../contexts/AppContext";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+
 
 export type SignInFormData = {
    email: string;
    password: string;
  };
 
-const SignIn = () => {
-  const [formData, setFormData] = useState<SignInFormData>({} as SignInFormData)
-  const [showPassword, setShowPassword] = useState(false)
-  const onSubmit = () => {
-    fetchData()
-  }
-  const fetchData = () => {}
+ const SignIn = () => {
+  const { showToast } = useAppContext();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const location = useLocation();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<SignInFormData>();
+
+  const mutation = useMutation(apiClient.signIn, {
+    onSuccess: async () => {
+      showToast({ message: "Sign in Successful!", type: "SUCCESS" });
+      await queryClient.invalidateQueries("validateToken");
+      navigate(location.state?.from?.pathname || "/");
+    },
+    onError: (error: Error) => {
+      showToast({ message: error.message, type: "ERROR" });
+    },
+  });
+
+  const onSubmit = handleSubmit((data) => {
+    mutation.mutate(data);
+  });
 
   return (
     <section className="flex items-center justify-center w-full ">
@@ -35,29 +61,36 @@ const SignIn = () => {
           <div className="flex items-center gap-4 my-8">
             <FaVoicemail className="text-center" />
             <input
-              id="email"
-              type="text"
-              value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value })
-              }}
+               id="email"
+               type="email"
+               {...register("email", { required: "This field is required" })}
               placeholder="Email/Username"
               className="basis-[90%] border-b border-black  outline-none bg-transparent"
             />
+            {errors.email && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
           </div>
           <div className="flex items-center w-full gap-4 my-8">
             <FaLock />
             <div className="flex items-baseline border-b border-black justify-between basis-[90%] bg-transparent pt-8">
               <input
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                 type="password"
                 placeholder="Password"
-                value={formData.password}
-                onChange={(e) => {
-                  setFormData({ ...formData, password: e.target.value })
-                }}
+                {...register("password", {
+                  required: "This field is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                })}
                 className="w-full outline-none"
               />
+               {errors.password && (
+                  <span className="text-red-500">{errors.password.message}</span>
+                )}
+
               <div
                 onClick={() => {
                   setShowPassword(!showPassword)
@@ -67,8 +100,9 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <Button text="Login" />
-        </form>
+          <Button  text="Login" /> 
+        </form> 
+
         <NavLink to="/forgot-password">
           <div className="my-4 text-right">
             <p className="text-[#6C757D]">Forgot Password?</p>
