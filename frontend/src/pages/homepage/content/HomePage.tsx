@@ -6,8 +6,8 @@ const HomePage = () => {
   const [btnActive, setBtnActive] = useState<number>(0)
 
   return (
-    <section className="h-[90vh] overflow-scroll">
-      <article className="flex justify-between">
+    <section className="h-[90vh] p-4 overflow-scroll">
+      <article className="flex justify-between items-center">
         <div className="text-[#6C8EEF] pt-4">
           <h2 className="text-[#343A40]">Hi John!</h2>
           <p>Let’s get to work</p>

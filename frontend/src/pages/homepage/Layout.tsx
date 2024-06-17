@@ -3,9 +3,9 @@ import { bottomNavbar } from '../../components/data'
 
 const Layout = () => {
   return (
-    <section className="w-full h-full bg-white p-4 text-[1rem]">
+    <section className="w-full h-full bg-white text-[1rem]">
       <Outlet />
-      <footer className="w-full max-w-[500px] p-4 fixed bottom-0 bg-white">
+      <footer className="w-full max-w-[500px] py-4 fixed bottom-0 bg-white">
         <div className="flex justify-center items-center bg-white">
           <section className="w-full flex justify-around items-center">
             {bottomNavbar.map((data, index) => {
