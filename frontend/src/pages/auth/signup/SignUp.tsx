@@ -1,65 +1,46 @@
-<<<<<<< HEAD:frontend/src/pages/auth/signup/SignUp.tsx
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../../components/Button'
 
+import { useForm } from 'react-hook-form'
+import { useMutation, useQueryClient } from 'react-query'
+import * as apiClient from '../../../api-client'
+import { useAppContext } from '../../../contexts/AppContext'
+import { useNavigate } from 'react-router-dom'
+
 export type SignUpFormData = {
-  firstname: string
-  lastname: string
+  firstName: string
+  lastName: string
   email: string
-}
-const SignUp = () => {
-  const [formData, setFormData] = useState<SignUpFormData>({} as SignUpFormData)
-  // const [showPassword, setShowPassword] = useState(false)
-  const onSubmit = () => {
-    fetchData()
-  }
-  const fetchData = () => {}
-=======
-import { Link } from 'react-router-dom'
-import Button from '../../components/Button'
-
-import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "react-query";
-import * as apiClient from "../../api-client";
-import { useAppContext } from "../../contexts/AppContext";
-import { useNavigate } from "react-router-dom";
-
-export type SignUpFormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+  password: string
+  confirmPassword: string
 }
 
 const SignUp = () => {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const { showToast } = useAppContext();
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
+  const { showToast } = useAppContext()
 
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignUpFormData>();
+  } = useForm<SignUpFormData>()
 
   const mutation = useMutation(apiClient.register, {
     onSuccess: async () => {
-      showToast({ message: "Registration Success!", type: "SUCCESS" });
-      await queryClient.invalidateQueries("validateToken");
-      navigate("/");
+      showToast({ message: 'Registration Success!', type: 'SUCCESS' })
+      await queryClient.invalidateQueries('validateToken')
+      navigate('/')
     },
     onError: (error: Error) => {
-      showToast({ message: error.message, type: "ERROR" });
+      showToast({ message: error.message, type: 'ERROR' })
     },
-  });
+  })
 
   const onSubmit = handleSubmit((data) => {
-    mutation.mutate(data);
-  });
->>>>>>> 08a8abc23cb9b111e117d3f8bd30538077af741b:frontend/src/pages/signup/SignUp.tsx
+    mutation.mutate(data)
+  })
 
   return (
     <section className="flex items-center justify-center w-full">
@@ -80,7 +61,9 @@ const SignUp = () => {
               </label>
               <input
                 id="firstname"
-                {...register("firstName", { required: "This field is required" })}
+                {...register('firstName', {
+                  required: 'This field is required',
+                })}
                 className="signup-input"
               />
               {errors.firstName && (
@@ -94,21 +77,14 @@ const SignUp = () => {
               </label>
               <input
                 id="lastname"
-<<<<<<< HEAD:frontend/src/pages/auth/signup/SignUp.tsx
-                type="text"
-                value={formData.lastname}
-                onChange={(e) => {
-                  setFormData({ ...formData, lastname: e.target.value })
-                }}
-                placeholder="Enter Your Last Name"
-=======
-                {...register("lastName", { required: "This field is required" })}
->>>>>>> 08a8abc23cb9b111e117d3f8bd30538077af741b:frontend/src/pages/signup/SignUp.tsx
+                {...register('lastName', {
+                  required: 'This field is required',
+                })}
                 className="signup-input"
               />
-                 {errors.lastName && (
-                  <span className="text-red-500">{errors.lastName.message}</span>
-                )}
+              {errors.lastName && (
+                <span className="text-red-500">{errors.lastName.message}</span>
+              )}
             </div>
 
             <div className="">
@@ -116,20 +92,17 @@ const SignUp = () => {
                 Email
               </label>
 
-<<<<<<< HEAD:frontend/src/pages/auth/signup/SignUp.tsx
-          <Button text="Sign up" location="verification" />
-=======
               <input
-                  id="email"
-                  type="email"
-                  {...register("email", { required: "This field is required" })}
-                   placeholder="Enter your Email for username"
-                  className="signup-input"
+                id="email"
+                type="email"
+                {...register('email', { required: 'This field is required' })}
+                placeholder="Enter your Email for username"
+                className="signup-input"
                 // ></input>
-                />
-                {errors.email && (
-                  <span className="text-red-500">{errors.email.message}</span>
-                )}
+              />
+              {errors.email && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
             </div>
 
             <div className="">
@@ -137,22 +110,22 @@ const SignUp = () => {
                 Password
               </label>
               <input
-                  id="password"
-                   type="password"
-                   {...register("password", {
-                    required: "This field is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters",
-                    },
-                  })}
-                   placeholder="Create Password"
-                  className="signup-input"
+                id="password"
+                type="password"
+                {...register('password', {
+                  required: 'This field is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters',
+                  },
+                })}
+                placeholder="Create Password"
+                className="signup-input"
                 // ></input>
-                />
-                {errors.password && (
-                  <span className="text-red-500">{errors.password.message}</span>
-                )}
+              />
+              {errors.password && (
+                <span className="text-red-500">{errors.password.message}</span>
+              )}
             </div>
 
             <div className="">
@@ -160,28 +133,28 @@ const SignUp = () => {
                 Confirm Password
               </label>
               <input
-                  id="password"
-                   type="password"
-                   {...register("confirmPassword", {
-                    validate: (val) => {
-                      if (!val) {
-                        return "This field is required";
-                      } else if (watch("password") !== val) {
-                        return "Your passwords do no match";
-                      }
-                    },
-                  })}
-                   placeholder="Confirm Password"
-                  className="signup-input"
-                />
-                 {errors.confirmPassword && (
-                  <span className="text-red-500">{errors.confirmPassword.message}</span>
-                )}
+                id="password"
+                type="password"
+                {...register('confirmPassword', {
+                  validate: (val) => {
+                    if (!val) {
+                      return 'This field is required'
+                    } else if (watch('password') !== val) {
+                      return 'Your passwords do no match'
+                    }
+                  },
+                })}
+                placeholder="Confirm Password"
+                className="signup-input"
+              />
+              {errors.confirmPassword && (
+                <span className="text-red-500">
+                  {errors.confirmPassword.message}
+                </span>
+              )}
             </div>
-
           </div>
-          <Button text="Sign up" />
->>>>>>> 08a8abc23cb9b111e117d3f8bd30538077af741b:frontend/src/pages/signup/SignUp.tsx
+          <Button text="Sign up" location="/" />
         </form>
 
         <Link to="/signin">

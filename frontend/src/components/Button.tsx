@@ -13,7 +13,6 @@ const Button = (props: prop) => {
       <button
         type="submit"
         className="flex btn-blue w-full justify-center items-center gap-2 mt-8"
-        onClick={() => navigate(`${location}`)}
       >
         <BtnIcon />
         <span>{text}</span>

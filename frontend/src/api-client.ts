@@ -3,7 +3,7 @@ import { SignInFormData } from './pages/auth/signin/SignIn'
 import { UserType } from '../../backend/src/shared/types'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || ''
-
+console.log(API_BASE_URL)
 export const fetchCurrentUser = async (): Promise<UserType> => {
   const response = await fetch(`${API_BASE_URL}/api/users/me`, {
     credentials: 'include',
