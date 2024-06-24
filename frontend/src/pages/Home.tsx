@@ -2,18 +2,15 @@ import { useEffect, useState } from 'react'
 import { home as homeData } from '../components/data'
 import { useNavigate } from 'react-router-dom'
 
-// type HomeType = { id: number; text: string; src: string }[]
-
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [num, setNum] = useState(0)
   // const [navDisplay, setNavDisplay] = useState(
-  const [navDisplay] = useState(
-       new Array(homeData.length).fill(0)
-     )
+  const [navDisplay] = useState(new Array(homeData.length).fill(0))
   const [text, setText] = useState('')
   const [src, setSrc] = useState('')
   // const [outputData, setOutputData] = useState<HomeType>([])
+
   const navigate = useNavigate()
   useEffect(() => {
     const fetchData = () => {
@@ -71,7 +68,7 @@ const Home = () => {
             </button>
           </div>
           <div className="flex items-center justify-center gap-2 py-4">
-             {navDisplay.map((data, index) => { 
+            {navDisplay.map((data, index) => {
               return (
                 <div
                   className={
@@ -85,7 +82,7 @@ const Home = () => {
                   <p className="w-full "></p>
                 </div>
               )
-             })} 
+            })}
           </div>
         </div>
       </div>
