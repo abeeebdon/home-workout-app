@@ -1,11 +1,11 @@
 import Card from '../../../components/Card'
 import { FaSearch } from 'react-icons/fa'
 
-type browse = {
+type Browse = {
   selectedLevel: string
-  handleSelectedLevel: (event: UIEvent<HTMLSelectElement>) => void
+  handleSelectedLevel: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
-const Browse = (props: browse) => {
+const Browse = (props: Browse) => {
   const selectedLevel = props.selectedLevel
   const handleSelectedLevel = props.handleSelectedLevel
   return (
@@ -26,7 +26,7 @@ const Browse = (props: browse) => {
           <select
             id="level"
             value={selectedLevel}
-            onChange={(e) => handleSelectedLevel(e)}
+            onChange={handleSelectedLevel}
             className="block w-full p-2 border border-gray-300 rounded-md bg-transparent focus:border-indigo-500 focus:ring-indigo-500"
           >
             <option value="Beginner">Beginner</option>

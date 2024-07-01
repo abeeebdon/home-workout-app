@@ -29,7 +29,7 @@ export const bottomNavbar: navbar = [
   {
     icon: <HomeIcon />,
     name: 'Home',
-    target: 'home',
+    target: '',
   },
   {
     icon: <TrackerIcon />,

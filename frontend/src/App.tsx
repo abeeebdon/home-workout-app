@@ -18,6 +18,8 @@ import HomePage from './pages/homepage/content/HomePage'
 import Tips from './pages/homepage/tips/Index'
 import Tracker from './pages/homepage/tracker/Index'
 import History from './pages/homepage/history/Index'
+import WorkoutCompleted from './pages/workout/W_Completed'
+import Profile from './pages/profile/Index'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -41,6 +43,8 @@ const App = () => {
             <Route path="/verification" element={<OtpVerification />} />
             <Route path="/verified" element={<Verified />} />
             <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/workout-completed" element={<WorkoutCompleted />} />
+            <Route path="/profile" element={<Profile />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
