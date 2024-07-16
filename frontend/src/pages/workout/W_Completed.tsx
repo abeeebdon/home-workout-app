@@ -4,8 +4,8 @@ import { EmojiSad } from '../../components/Icons'
 const WorkoutCompleted = () => {
   const navigate = useNavigate()
   return (
-    <section>
-      <div className="h-[60vh] relative">
+    <section className="p-4">
+      <div className="h-[60vh] max-h-[280px] relative">
         <img
           src="/images/image-sit.png"
           alt="sit out image"
