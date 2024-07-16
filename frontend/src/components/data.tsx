@@ -2,6 +2,12 @@ import { HistoryIcon, HomeIcon, TipsIcon, TrackerIcon } from './Icons'
 
 type home = { id: number; src: string; text: string }[]
 type navbar = { icon: JSX.Element; name: string; target: string }[]
+type WorkoutList = {
+  id: number
+  name: string
+  source: string
+  time: string
+}[]
 export const home: home = [
   {
     id: 1,
@@ -67,4 +73,38 @@ export const forYou: home = [
     src: '/images/image11.png',
     text: 'STRENGTH',
   },
+]
+export const profileData = {
+  id: 1,
+  Age: 40,
+  weight: '176 lbs',
+  height: 60,
+}
+export const fitnessGoals = [
+  'Body posture',
+  'Nutrition tips',
+  'Weight loss',
+  'Body fit',
+  'Physical fitness',
+  'Build Muscle',
+]
+export const workoutPreference = [
+  'Cardio',
+  'Strength Training',
+  'Yoga',
+  'High Intensity Interval Training (HIIT)',
+]
+export const workoutList: WorkoutList = [
+  { id: 1, source: '', name: 'Jumping packs', time: '00:20' },
+  { id: 2, source: '', name: 'Rope Jumping', time: '00:20' },
+  { id: 3, source: '', name: 'Bicycle', time: '16' },
+  { id: 4, source: '', name: 'Leg Raises', time: '16' },
+  { id: 5, source: '', name: 'Jumping packs', time: '00:20' },
+  { id: 6, source: '', name: 'Rope Jumping', time: '00:20' },
+  { id: 7, source: '', name: 'Bicycle', time: '16' },
+  { id: 8, source: '', name: 'Leg Raises', time: '16' },
+  { id: 9, source: '', name: 'Jumping packs', time: '00:20' },
+  { id: 10, source: '', name: 'Rope Jumping', time: '00:20' },
+  { id: 11, source: '', name: 'Bicycle', time: '16' },
+  { id: 12, source: '', name: 'Leg Raises', time: '16' },
 ]

@@ -11,7 +11,10 @@ const Layout = () => {
           <p>Let’s get to work</p>
         </div>
 
-        <div onClick={() => navigate('/profile')}>
+        <div
+          onClick={() => navigate('/profile')}
+          className="cursor-pointer p-2 rounded-full hover:bg-slate-200"
+        >
           <img src="/images/profile.png" alt="profile img" />
         </div>
       </article>
