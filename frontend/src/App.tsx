@@ -20,6 +20,7 @@ import Tracker from './pages/homepage/tracker/Index'
 import History from './pages/homepage/history/Index'
 import WorkoutCompleted from './pages/workout/W_Completed'
 import Profile from './pages/profile/Index'
+import Workouts from './pages/workout/list/Workouts'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -36,16 +37,15 @@ const App = () => {
               <Route path="tracker" element={<Tracker />} />
               <Route path="history" element={<History />} />
             </Route>
-
             <Route path="/register" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/verification" element={<OtpVerification />} />
             <Route path="/verified" element={<Verified />} />
             <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/workouts" element={<Workouts />} />
             <Route path="/workout-completed" element={<WorkoutCompleted />} />
             <Route path="/profile" element={<Profile />} />
-
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Router>
