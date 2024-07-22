@@ -3,7 +3,10 @@ import { workoutList } from '../../../components/data'
 
 const Workouts = () => {
   return (
+
     <section className="p-4 pt-0 bg-white">
+    
+
       <article>
         <div className="h-[60vh] max-h-[280px] relative">
           <img
@@ -17,6 +20,7 @@ const Workouts = () => {
           </div>
         </div>
       </article>
+
       <article className="p-4">
         <div className="my-4 flex gap-4 items-center">
           <h2 className="font-[500] text-[#2C4BA0] text-[24px]">20 mins</h2>
@@ -45,15 +49,18 @@ const Workouts = () => {
                   </h2>
                   <p className="leading-[20px] text-[14px]">{workout.time}</p>
                 </div>
+
               </div>
             )
           })}
         </div>
       </article>
+
       <div className="p-4 bg-[#F7F9FC] text-white text-center">
         <button className="bg-[#2C4BA0] w-[80%] py-2 rounded-lg">
           Continue
         </button>
+
       </div>
     </section>
   )
