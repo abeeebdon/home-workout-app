@@ -95,6 +95,38 @@ export const workoutPreference = [
   'High Intensity Interval Training (HIIT)',
 ]
 export const workoutList: WorkoutList = [
+
+  {
+    id: 1,
+    source: '/images/gif-chest-stretch.png',
+    name: 'Jumping packs',
+    time: '00:20',
+  },
+  {
+    id: 2,
+    source: '/images/gif-chest-stretch.png',
+    name: 'Rope Jumping',
+    time: '00:20',
+  },
+  {
+    id: 3,
+    source: '/images/gif-chest-stretch.png',
+    name: 'Bicycle',
+    time: '16',
+  },
+  {
+    id: 4,
+    source: '/images/gif-chest-stretch.png',
+    name: 'Leg Raises',
+    time: '16',
+  },
+  {
+    id: 5,
+    source: '/images/gif-chest-stretch.png',
+    name: 'Leg Raises',
+    time: '16',
+  },
+
   { id: 1, source: '', name: 'Jumping packs', time: '00:20' },
   { id: 2, source: '', name: 'Rope Jumping', time: '00:20' },
   { id: 3, source: '', name: 'Bicycle', time: '16' },
@@ -107,4 +139,5 @@ export const workoutList: WorkoutList = [
   { id: 10, source: '', name: 'Rope Jumping', time: '00:20' },
   { id: 11, source: '', name: 'Bicycle', time: '16' },
   { id: 12, source: '', name: 'Leg Raises', time: '16' },
+
 ]
