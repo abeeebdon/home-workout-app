@@ -11,9 +11,9 @@ const Card = (props: card) => {
   const arrow = props.arrow
   const height = props.height
   return (
-    <article className="mt-4">
-      <div className="flex justify-between px-6 mb-4">
-        <h2>{text}</h2>
+    <article className="mt-4 mb-4">
+      <div className="flex justify-between  mb-4">
+        <h2 className="heading-1 font-bold mb-4 text-primary">{text}</h2>
         {arrow && <RightArrow />}
       </div>
       <div className="flex flex-1 overflow-auto relative w-full">
@@ -26,9 +26,9 @@ const Card = (props: card) => {
               <div className="absolute top-2 right-6 w-fit p-1 bg-white rounded-full">
                 <img src="/images/VectorIcon.png" alt="n" />
               </div>
-              <div className="absolute bottom-3 left-2 max-w-[50px] text-[12px]">
-                <p>{data.text}</p>
-              </div>
+              <p className="absolute bottom-3 left-2 max-w-[50px] text-[12px]">
+                {data.text}
+              </p>
               <img
                 src={data.src}
                 alt={data.text}

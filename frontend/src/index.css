@@ -23,11 +23,26 @@
   .keyboard {
     @apply grid grid-cols-3 w-full text-center gap-4;
   }
+  .heading {
+    @apply text-[16px] leading-[24px];
+  }
+  .heading-2 {
+    @apply text-[24px] leading-[40px] font-bold;
+  }
+  .heading-1 {
+    @apply text-[12px] leading-[16px];
+  }
+  .paragraph {
+    @apply text-[12px] leading-[16px];
+  }
+  .paragraph-2 {
+    @apply text-[8px] leading-[16px];
+  }
 }
 
 body {
   background-color: rgb(239 246 255);
 }
 * {
-  scrollbar-width: none;
+  scrollbar-width: thin;
 }
