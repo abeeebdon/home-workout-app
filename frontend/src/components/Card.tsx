@@ -15,7 +15,7 @@ const Card = (props: card) => {
       <div className="flex justify-between  mb-4">
         <h2 className="heading-1 font-bold mb-4 text-primary">{text}</h2>
         {arrow && <RightArrow />}
-      </div>
+      </div> 
       <div className="flex flex-1 overflow-auto relative w-full">
         {forYou.map((data, index) => {
           return (
@@ -26,14 +26,20 @@ const Card = (props: card) => {
               <div className="absolute top-2 right-6 w-fit p-1 bg-white rounded-full">
                 <img src="/images/VectorIcon.png" alt="n" />
               </div>
+<<<<<<< HEAD
               <p className="absolute bottom-3 left-2 max-w-[50px] text-[12px]">
                 {data.text}
               </p>
+=======
+              <div className="absolute bottom-3 left-2 max-w-[50px] text-[12px]">
+                <p>{data.text}</p>
+              </div> 
+>>>>>>> e9571720588995c277b7b02d8e52d960ff65eef1
               <img
                 src={data.src}
                 alt={data.text}
                 className="w-[180px] h-full rounded-lg"
-              />
+              /> 
             </div>
           )
         })}
