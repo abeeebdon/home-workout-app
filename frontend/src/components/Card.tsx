@@ -15,7 +15,7 @@ const Card = (props: card) => {
       <div className="flex justify-between px-6 mb-4">
         <h2>{text}</h2>
         {arrow && <RightArrow />}
-      </div>
+      </div> 
       <div className="flex flex-1 overflow-auto relative w-full">
         {forYou.map((data, index) => {
           return (
@@ -28,12 +28,12 @@ const Card = (props: card) => {
               </div>
               <div className="absolute bottom-3 left-2 max-w-[50px] text-[12px]">
                 <p>{data.text}</p>
-              </div>
+              </div> 
               <img
                 src={data.src}
                 alt={data.text}
                 className="w-[180px] h-full rounded-lg"
-              />
+              /> 
             </div>
           )
         })}

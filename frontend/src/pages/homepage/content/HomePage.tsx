@@ -26,7 +26,7 @@ const HomePage = () => {
           })}
         </div>
       </article>
-      <HomeBody btnActive={btnActive} />
+      <HomeBody btnActive={btnActive} /> 
     </section>
   )
 }

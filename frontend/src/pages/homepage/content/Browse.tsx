@@ -35,7 +35,7 @@ const Browse = (props: Browse) => {
         </div>
       </article>
       <Card arrow={true} text="CATEGORIES" height="200px" />
-      <Card arrow={true} text="CATEGORIES" height="200px" />
+      <Card arrow={true} text="CATEGORIES" height="200px" /> 
     </section>
   )
 }
