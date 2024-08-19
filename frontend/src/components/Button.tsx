@@ -2,6 +2,7 @@ import { BtnIcon } from './Icons'
 type prop = {
   text: string
   icon?: boolean
+  location?: string
 }
 const Button = (props: prop) => {
   const { text, icon } = props

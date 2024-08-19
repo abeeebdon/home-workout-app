@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { useAppContext } from "../contexts/AppContext";
-import SignOutButton from "./SignOutButton";
+import { Link } from 'react-router-dom'
+import SignOutButton from './SignOutButton'
 
 const Header = () => {
-  const { isLoggedIn } = useAppContext();
-
+  const isLoggedIn = false
   return (
     <div className="py-6 bg-blue-800">
       <div className="container flex justify-between mx-auto">
@@ -25,7 +23,7 @@ const Header = () => {
                 to="/"
               >
                 Membership Plan
-              </Link> 
+              </Link>
               <SignOutButton />
             </>
           ) : (
@@ -39,7 +37,7 @@ const Header = () => {
         </span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
