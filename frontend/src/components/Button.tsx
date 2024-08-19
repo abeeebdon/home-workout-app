@@ -1,18 +1,20 @@
 import { BtnIcon } from './Icons'
 type prop = {
   text: string
-  location: string
+  icon?: boolean
+  location?: string
 }
 const Button = (props: prop) => {
-  const text = props.text
-  // const location = props.location
+  const { text, icon } = props
   return (
     <div className="w-full mt-10 pt-8">
       <button
         type="submit"
         className="flex btn-blue w-full justify-center items-center gap-2 mt-8"
       >
-        <BtnIcon />
+        <div className={icon ? 'block' : 'hidden'}>
+          <BtnIcon />
+        </div>
         <span>{text}</span>
       </button>
     </div>

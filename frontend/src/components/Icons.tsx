@@ -147,7 +147,7 @@ export const RightArrow = () => {
   )
 }
 
-export const searchIcon = () => {
+export const SearchIcon = () => {
   return (
     <svg
       width="24"

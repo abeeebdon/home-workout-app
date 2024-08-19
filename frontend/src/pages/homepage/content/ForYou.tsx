@@ -2,7 +2,9 @@ import Card from '../../../components/Card'
 const ForYou = () => {
   return (
     <article>
-      <h2 className="text-[1.2rem] font-[500] mt-[1rem]">SELECTED FOR YOU</h2>
+      <h2 className="heading-1 font-bold mt-4 text-primary">
+        SELECTED FOR YOU
+      </h2>
       <div className="h-[200px] w-full relative max-w-[500px] rounded-lg mt-4">
         <div className="absolute right-4 top-3">
           <img src="/images/Vector-2.png" alt="vector2" />
@@ -17,11 +19,15 @@ const ForYou = () => {
           <p className="font-[500]">20 MINS . 16 EXERCISES</p>
         </div>
       </div>
-      <h2 className="my-4">Your progress</h2>
-      <section className="bg-[#F7F9FC] p-4 rounded-lg">
-        <div className="flex justify-between">
-          <p>You have not started any program.</p>
-          <span className="font-[500] text-[1.5rem] text-[#2C4BA0]">0%</span>
+      <h2 className="my-4 heading-1 font-bold  text-primary">Your progress</h2>
+      <section className="bg-[#F7F9FC] p-4 py-5 rounded-lg">
+        <div className="flex justify-between items-center">
+          <p className="paragraph font-normal">
+            You have not started any program.
+          </p>
+          <span className="font-[500] text-[1.5rem] leading-[40px] text-secondary">
+            0%
+          </span>
         </div>
         <article className="bg-[#6C8EEF] mt-4 rounded-lg p-4">
           <div className="flex text-white items-baseline gap-4">
@@ -29,32 +35,33 @@ const ForYou = () => {
             <p className="text-[10px]">Updated 5 mins ago</p>
           </div>
           <article className="mt-5 flex justify-around items-center">
-            <div className="bg-white p-4 rounded-lg text-center">
-              <p className="text-[10px]">Weight</p>
-              <p className="text-[#2C4BA0] text-[1.3rem] font-[700]">
-                176<sub className="text-[#6C757D] font-normal">lbs</sub>
+            <div className="bg-white px-4 rounded-lg text-center h-[45px] w-[80px]">
+              <p className="paragraph-2">Weight</p>
+              <p className="text-[#2C4BA0] leading-[32px] text-[1.3rem] font-[700]">
+                176
+                <sub className="text-[#6C757D] font-normal paragraph-2">
+                  lbs
+                </sub>
               </p>
             </div>
 
-            <div className="bg-white p-4 rounded-lg text-center">
-              <p>Steps</p>
-              <p className="text-[#2C4BA0] text-[1.3rem] font-[700]">298</p>
+            <div className="bg-white px-4 h-[45px] w-[80px] rounded-lg text-center">
+              <p className="paragraph-2">Steps</p>
+              <p className="text-[#2C4BA0] leading-[32px] text-[1.3rem] font-[700]">
+                298
+              </p>
             </div>
-
-            <div className="bg-white p-4 rounded-lg text-center">
-              <p>Weight</p>
-
-              <p className="text-[#2C4BA0] text-[1.3rem] font-[700]">
-                105<sub>bpm</sub>
+            <div className="bg-white px-4 rounded-lg text-center h-[45px] w-[80px]">
+              <p className="paragraph-2">Weight</p>
+              <p className="text-[#2C4BA0] font-[700] leading-[32px] text-[1.3rem]">
+                105<sub className="paragraph-2">bpm</sub>
               </p>
             </div>
           </article>
         </article>
       </section>
-      <section className="mt-4">
+      <section className="mt-6 mb-12">
         <Card arrow={true} text="CATEGORIES" height="200px" />
-      </section>
-      <section className="my-4">
         <Card arrow={true} text="SPECIAL ROUTINES" height="200px" />
       </section>
     </article>

@@ -1,5 +1,5 @@
 import Card from '../../../components/Card'
-import { FaSearch } from 'react-icons/fa'
+import { SearchIcon } from '../../../components/Icons'
 
 type Browse = {
   selectedLevel: string
@@ -16,26 +16,25 @@ const Browse = (props: Browse) => {
           className="w-full bg-transparent text-white outline-none border-none placeholder:text-white px-4"
           placeholder="Search Program"
         />
-        <FaSearch className="basis-[20%] text-white text-[1.2rem] " />
+
+        <SearchIcon />
       </div>
-      <article className="mt-4">
-        <div className=" mb-4">
-          <h3>Select Level</h3>
-        </div>
-        <div>
-          <select
-            id="level"
-            value={selectedLevel}
-            onChange={handleSelectedLevel}
-            className="block w-full p-2 border border-gray-300 rounded-md bg-transparent focus:border-indigo-500 focus:ring-indigo-500"
-          >
-            <option value="Beginner">Beginner</option>
-            <option value="Senior">Senior</option>
-          </select>
-        </div>
+      <article className="mt-4 mb-2">
+        <h3 className="heading-1 font-bold mb-4 text-primary">Select Level</h3>
+        <select
+          id="level"
+          value={selectedLevel}
+          onChange={handleSelectedLevel}
+          className="block w-full p-4 border border-gray-300 rounded-md bg-transparent focus:border-indigo-500 focus:ring-indigo-500"
+        >
+          <option value="Beginner">Beginner Level</option>
+          <option value="Senior">Senior</option>
+        </select>
       </article>
-      <Card arrow={true} text="CATEGORIES" height="200px" />
-      <Card arrow={true} text="CATEGORIES" height="200px" /> 
+      <section className="mb-14">
+        <Card arrow={true} text="CATEGORIES" height="200px" />
+        <Card arrow={true} text="CATEGORIES" height="200px" />
+      </section>
     </section>
   )
 }

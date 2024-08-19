@@ -21,6 +21,7 @@ import History from './pages/homepage/history/Index'
 import WorkoutCompleted from './pages/workout/W_Completed'
 import Profile from './pages/profile/Index'
 import Workouts from './pages/workout/list/Workouts'
+import SingleWorkout from './pages/workout/singleWorkout/SingleWorkout'
 
 const App = () => {
   // const { isLoggedIn } = useAppContext();
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/verified" element={<Verified />} />
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/workouts" element={<Workouts />} />
+            <Route path="/workout/:id" element={<SingleWorkout />} />
             <Route path="/workout-completed" element={<WorkoutCompleted />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<Navigate to="/" />} />
