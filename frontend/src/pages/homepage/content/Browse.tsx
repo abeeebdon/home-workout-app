@@ -31,15 +31,10 @@ const Browse = (props: Browse) => {
           <option value="Senior">Senior</option>
         </select>
       </article>
-<<<<<<< HEAD
       <section className="mb-14">
         <Card arrow={true} text="CATEGORIES" height="200px" />
         <Card arrow={true} text="CATEGORIES" height="200px" />
       </section>
-=======
-      <Card arrow={true} text="CATEGORIES" height="200px" />
-      <Card arrow={true} text="CATEGORIES" height="200px" /> 
->>>>>>> e9571720588995c277b7b02d8e52d960ff65eef1
     </section>
   )
 }

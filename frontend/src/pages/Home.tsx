@@ -5,20 +5,18 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [num, setNum] = useState(0)
-  // const [navDisplay, setNavDisplay] = useState(
   const [navDisplay] = useState(new Array(homeData.length).fill(0))
   const [text, setText] = useState('')
   const [src, setSrc] = useState('')
-  // const [outputData, setOutputData] = useState<HomeType>([])
 
   const navigate = useNavigate()
   useEffect(() => {
     const fetchData = () => {
-      const filteredData = homeData.filter((_data, index) => index === num)
-      // setOutputData(filteredData)
-      if (filteredData.length > 0) {
-        setSrc(filteredData[0].src)
-        setText(filteredData[0].text)
+      const findData = homeData.find((data) => data.id === num + 1)
+      console.log(findData)
+      if (findData) {
+        setSrc(findData.src)
+        setText(findData.text)
       }
     }
     setIsLoading(true)

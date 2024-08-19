@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom'
 import Button from '../../../components/Button'
 
 import { useForm } from 'react-hook-form'
-import { useMutation, useQueryClient } from 'react-query'
-import * as apiClient from '../../../api-client'
-import { useAppContext } from '../../../contexts/AppContext'
-import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+// import { useMutation, useQueryClient } from 'react-query'
+// import { Signup } from '../../../api-client'
+// import { useAppContext } from '../../../contexts/AppContext'
+// import { useNavigate } from 'react-router-dom'
 
 export type SignUpFormData = {
   firstName: string
@@ -16,31 +17,37 @@ export type SignUpFormData = {
 }
 
 const SignUp = () => {
-  const queryClient = useQueryClient()
-  const navigate = useNavigate()
-  const { showToast } = useAppContext()
+  // const queryClient = useQueryClient()
+  // const navigate = useNavigate()
+  // const { showToast } = useAppContext()
+  const url = 'https://home-workout-app.onrender.com/api/users/register'
+  const { register, watch, handleSubmit, formState, getValues } =
+    useForm<SignUpFormData>()
 
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignUpFormData>()
-
-  const mutation = useMutation(apiClient.register, {
-    onSuccess: async () => {
-      showToast({ message: 'Registration Success!', type: 'SUCCESS' })
-      await queryClient.invalidateQueries('validateToken')
-      navigate('/')
-    },
-    onError: (error: Error) => {
-      showToast({ message: error.message, type: 'ERROR' })
-    },
-  })
-
-  const onSubmit = handleSubmit((data) => {
-    mutation.mutate(data)
-  })
+  const { errors } = formState
+  // const mutation = useMutation(apiClient.register, {
+  //   onSuccess: async () => {
+  //     showToast({ message: 'Registration Success!', type: 'SUCCESS' })
+  //     await queryClient.invalidateQueries('validateToken')
+  //     navigate('/')
+  //   },
+  //   onError: (error: Error) => {
+  //     showToast({ message: error.message, type: 'ERROR' })
+  //   },
+  // })
+  const Signup = async (data: SignUpFormData) => {
+    const response = await axios.post(url, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    console.log(response)
+  }
+  const onSubmit = () => {
+    const data = getValues()
+    Signup(data)
+    console.log(data)
+  }
 
   return (
     <section className="flex items-center justify-center w-full">
@@ -53,7 +60,7 @@ const SignUp = () => {
           progress, and connect with others. Start now!
         </p>
 
-        <form className="mt-4" onSubmit={onSubmit}>
+        <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full">
             <div className="">
               <label htmlFor="firstname" className="block form-label">
@@ -154,7 +161,7 @@ const SignUp = () => {
               )}
             </div>
           </div>
-          <Button text="Sign up" location="/" />
+          <Button text="Sign up" />
         </form>
 
         <Link to="/signin">
