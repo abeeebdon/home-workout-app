@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button'
 
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 // import { useMutation, useQueryClient } from 'react-query'
 // import { Signup } from '../../../api-client'
 // import { useAppContext } from '../../../contexts/AppContext'
@@ -20,9 +19,10 @@ const SignUp = () => {
   // const queryClient = useQueryClient()
   // const navigate = useNavigate()
   // const { showToast } = useAppContext()
-  const url = 'https://home-workout-app.onrender.com/api/users/register'
+  // const url = 'https://home-workout-app.onrender.com/api/users/register'
   const { register, watch, handleSubmit, formState, getValues } =
     useForm<SignUpFormData>()
+  const navigate = useNavigate()
 
   const { errors } = formState
   // const mutation = useMutation(apiClient.register, {
@@ -35,18 +35,19 @@ const SignUp = () => {
   //     showToast({ message: error.message, type: 'ERROR' })
   //   },
   // })
-  const Signup = async (data: SignUpFormData) => {
-    const response = await axios.post(url, data, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    console.log(response)
-  }
+  // const Signup = async (data: SignUpFormData) => {
+  //   const response = await axios.post(url, data, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //   console.log(response)
+  // }
   const onSubmit = () => {
     const data = getValues()
-    Signup(data)
     console.log(data)
+    // Signup(data)
+    navigate('/signin')
   }
 
   return (
@@ -161,7 +162,7 @@ const SignUp = () => {
               )}
             </div>
           </div>
-          <Button text="Sign up" />
+          <Button text="Sign up" icon />
         </form>
 
         <Link to="/signin">

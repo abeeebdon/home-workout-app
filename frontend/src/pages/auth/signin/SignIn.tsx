@@ -3,27 +3,27 @@ import { FaEye, FaEyeSlash, FaLock, FaVoicemail } from 'react-icons/fa'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button'
 import { SignInFormData } from '../../../utils/types/Type'
-import axios from 'axios'
 
 const SignIn = () => {
   const [formData, setFormData] = useState<SignInFormData>({} as SignInFormData)
   const [showPassword, setShowPassword] = useState(false)
-  const [isError, setIsError] = useState<boolean>(false)
+  // const [isError, setIsError] = useState<boolean>(false)
   const navigate = useNavigate()
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(formData)
-    const url = 'https://home-workout-app.onrender.com/login/'
-    const resp = await axios.post(url, formData, {
-      headers: {
-        'Content-Type': 'Application/json',
-      },
-    })
-    if (resp.status === 200) {
-      navigate('/')
-    } else {
-      setIsError(true)
-    }
+    navigate('/home')
+    // const url = 'https://home-workout-app.onrender.com/login/'
+    // const resp = await axios.post(url, formData, {
+    //   headers: {
+    //     'Content-Type': 'Application/json',
+    //   },
+    // })
+    // if (resp.status === 200) {
+    //   navigate('/')
+    // } else {
+    //   setIsError(true)
+    // }
   }
   return (
     <>
@@ -44,7 +44,7 @@ const SignIn = () => {
         </p>
 
         <form className="mt-[20vh]" onSubmit={handleSubmit}>
-          <div className="flex items-center gap-4 my-8">
+          <div className="flex items-center gap-4 my-8 outline-none">
             <FaVoicemail className="text-center" />
             <input
               id="email"
@@ -54,12 +54,12 @@ const SignIn = () => {
                 setFormData({ ...formData, email: e.target.value })
               }}
               placeholder="Email/Username"
-              className="basis-[90%] border-b border-black  outline-none bg-transparent"
+              className="basis-[90%] border-b pb-2 border-black outline-none bg-transparent text-center"
             />
           </div>
-          <div className="flex items-center gap-4 w-full my-8">
+          <div className="flex items-baseline gap-4 w-full my-8">
             <FaLock />
-            <div className="flex items-baseline border-b border-black justify-between basis-[90%] bg-transparent pt-8">
+            <div className="flex items-baseline border-b pb-2 border-black justify-between basis-[90%] bg-transparent pt-8">
               <input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
@@ -68,7 +68,7 @@ const SignIn = () => {
                 onChange={(e) => {
                   setFormData({ ...formData, password: e.target.value })
                 }}
-                className="w-full outline-none bg-transparent"
+                className="w-full outline-none bg-transparent text-center"
               />
               <div
                 onClick={() => {
@@ -79,7 +79,7 @@ const SignIn = () => {
               </div>
             </div>
           </div>
-          <Button text="Login" />
+          <Button icon text="Login" />
         </form>
         <NavLink to="/forgot-password">
           <div className="my-4 text-right">
@@ -95,7 +95,7 @@ const SignIn = () => {
             Sign up
           </Link>
         </div>
-        {isError && <p> there is an error</p>}
+        {/* {isError && <p> there is an error</p>} */}
       </section>
     </>
   )
